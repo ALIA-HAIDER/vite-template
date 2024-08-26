@@ -1,0 +1,165 @@
+/* Container for the entire layout */
+.container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 90vh;
+    padding: 20px;
+    background-color: #439acc; 
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 255, 0.1); /* Blue shadow */
+    margin: 3%;
+    flex-direction: row;
+  }
+  
+  /* Navbar styling */
+  .navbar {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  /* Main navbar items */
+  .navbarMain {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Container for each link with bio section */
+  .linkContainer {
+    position: relative;
+    transition: margin-bottom 0.6s ease;
+  }
+  
+  /* Styling for individual links */
+  .link {
+    padding: 20px;
+    text-decoration: none;
+    color: #000000; /* Dark blue text */
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    transition:
+      background-color 0.6s ease,
+      color 0.6s ease;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    font-family: Inter;
+    font-size: 23px;
+    font-weight: 500;
+    line-height: 32.2px;
+    text-align: left;
+  }
+  
+  /* Hover and active state for links */
+  .link:hover,
+  .link[data-active='true'] {
+    background-color: #cce0ff; /* Light blue background on hover */
+    color: #000033; /* Darker blue text */
+  }
+  
+  /* Styling for link icons */
+  .linkIcon {
+    margin-right: 10px;
+    color: #000000; /* Dark blue icon color */
+    width: 20px;
+    height: 17px;
+  }
+  
+  /* Bio section styling */
+  .bio {
+    display: none;
+    padding: 10px;
+    background-color: #e6f0ff; /* Very light blue background */
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 255, 0.1); /* Blue shadow */
+    margin-top: 5px;
+    font-size: 16px;
+    color: #003366; /* Dark blue text */
+    transition:
+      max-height 0.6s ease,
+      opacity 0.6s ease;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    font-family: Inter;
+    font-weight: 500;
+    line-height: 22.4px;
+    text-align: left;
+  }
+  
+  /* Ensure bio remains visible when hovering over tab or bio */
+  .linkContainer:hover .bio,
+  .linkContainer .bio:hover {
+    display: block;
+    max-height: 100px;
+    opacity: 1;
+    margin-top: 10px;
+  }
+  
+  /* Extended hover area to prevent glitches */
+  .linkContainer::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    z-index: 0;
+  }
+  
+  /* Adjust margin for bio container when shown */
+  .linkContainer.showBioContainer {
+    margin-bottom: 110px;
+  }
+  
+  /* Image container styling */
+  .imageContainer {
+    flex-grow: 1;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* By default, image container is visible */
+  }
+  
+  /* Styling for tab images */
+  .tabImage {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 255, 0.1); /* Blue shadow */
+    transition: opacity 0.6s ease;
+  }
+  
+  /* Hide image if empty */
+  .tabImage:empty {
+    opacity: 1;
+    height: 80vh;
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      height: auto;
+    }
+  
+    .navbar {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  
+    .imageContainer {
+      display: none; /* Hide image on mobile */
+    }
+  }
+  
